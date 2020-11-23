@@ -1,0 +1,78 @@
+//rock paper scissors
+
+//4 possible outcomes:
+//bear mauls human
+//human disarms gun
+//gun shoots bear
+//tie
+
+//Getting user's choice
+
+function getUserChoice(userInput) {
+    userInput = userInput.toLowerCase();
+    if (userInput == 'bear') {
+        return userInput;
+    } else if (userInput == 'human') {
+        return userInput;
+    } else if (userInput == 'gun') {
+        return userInput;
+    } else {
+        console.log('Error, Invalid entry');
+    }
+
+}
+//Getting computerChoice and it to be all lowercase
+
+function getComputerChoice() {
+    var randomNumber = Math.floor(Math.random()*3);
+    if (randomNumber == 0) {
+        return 'bear';
+    } else if (randomNumber == 1) {
+        return 'human';
+    } else if (randomNumber == 2) {
+        return 'gun';
+    }    
+
+}
+
+//Creating a winning situation based on if/else arguments for all outcomes
+function determineWinner(userChoice,computerChoice) {
+    if (userChoice == computerChoice) {
+        return 'This round is a Tie, how exciting!'
+ //Cases when user has bear and not a tie  
+    } else if (userChoice == 'human') {
+        if (computerChoice == 'bear') {
+            return 'Computer\'s Bear mauls User\'s Human in a dispassionate display of violence';
+        } else {
+            return 'User\'s human calmly dismantles computer\'s gun during a high energy, yet ultimately low stakes montage';
+        }
+           
+    }
+//Cases where user chose bear and not  a tie     
+    if (userChoice == 'bear') {
+        if (computerChoice == 'human') {
+            return 'User\'s bear tears apart Computer\'s human with ribbons of viscera strewn everywhere!';
+        } else {
+            return 'User\'s bear is cruelly shot by the unerring accuracy of the Computer\'s gun';
+        }
+    }
+//Cases where user chose gun and not a tie    
+    if (userChoice == 'gun') {
+        if (computerChoice == 'human') {
+            return 'User\'s gun is methodically dismantled by the Computer\'s dexterous mechanical arms';
+        } else {
+            return 'Computer\'s bear is shot to death by a sobbing User\'s gun';
+        }
+    }              
+}
+  //Function playGame uses a prompt for an input to getuserchoice and then using console.log and the determine winner function displays the outcome 
+         
+function playGame() {
+    var promptUserChoice = prompt('Please choose bear, human or gun');
+    var userChoice = getUserChoice(promptUserChoice);
+    var computerChoice = getComputerChoice();
+    console.log(userChoice + ' was selected by the user');
+    console.log(computerChoice + ' was selected by the computer');
+    console.log(determineWinner(userChoice,computerChoice));
+}
+
